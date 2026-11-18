@@ -1,0 +1,498 @@
+<div class="admin-panel">
+  <!-- ENCABEZADO -->
+  <header class="admin-header">
+    <div class="brand">
+      <span class="brand-icon">✦</span>
+      <span>PHANNY GAMES</span>
+    </div>
+
+    <div class="header-right">
+      <button class="admin-user profile-trigger" (click)="abrirEditarPerfil()">
+        <span class="admin-avatar">{{ fotoAdminActual }}</span>
+        <span class="admin-user-text">
+          <strong>{{ nombreAdminActual }}</strong>
+          <small>{{ rolActual }} · Editar perfil</small>
+        </span>
+      </button>
+      <button class="logout-button" (click)="mostrarAviso('El cierre de sesión se conectará durante la etapa de funcionamiento.')">
+        <span>↪</span> Cerrar sesión
+      </button>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <!-- MENÚ LATERAL -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-heading">ADMINISTRACIÓN</div>
+
+      <button [class.active]="seccion === 'cuentas'" (click)="cambiarSeccion('cuentas')">
+        <span>♙</span> Gestión de cuentas
+      </button>
+      <button [class.active]="seccion === 'administradores'" (click)="cambiarSeccion('administradores')">
+        <span>♜</span> Administradores
+      </button>
+      <button [class.active]="seccion === 'moderacion'" (click)="cambiarSeccion('moderacion')">
+        <span>▣</span> Moderación de contenido
+      </button>
+      <button [class.active]="seccion === 'reportes'" (click)="cambiarSeccion('reportes')">
+        <span>⚑</span> Reportes
+      </button>
+      @if (rolActual === 'Propietaria') {
+        <button [class.active]="seccion === 'actividad'" (click)="cambiarSeccion('actividad')">
+          <span>◷</span> Registro de actividad
+        </button>
+      }
+
+      <div class="sidebar-bottom">
+        <span class="sidebar-star">✧</span>
+        <small>Phanny Games</small>
+        <small>Panel de supervisión</small>
+      </div>
+    </aside>
+
+    <!-- CONTENIDO CENTRAL -->
+    <main class="admin-content">
+      <!-- GESTIÓN DE CUENTAS -->
+      @if (seccion === 'cuentas') {
+        <section>
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">ADMINISTRACIÓN DE USUARIOS</span>
+              <h1>Gestión de cuentas</h1>
+              <p>Consulta y administra las cuentas de la plataforma.</p>
+            </div>
+            <span class="heading-icon">♙</span>
+          </div>
+
+          <div class="tabs">
+            <button [class.selected]="pestanaCuentas === 'usuarios'" (click)="pestanaCuentas = 'usuarios'; busqueda = ''">Usuarios</button>
+            <button [class.selected]="pestanaCuentas === 'desarrolladores'" (click)="pestanaCuentas = 'desarrolladores'; busqueda = ''">Desarrolladores</button>
+          </div>
+
+          <div class="content-card">
+            <div class="card-heading">
+              <div>
+                <h2>{{ pestanaCuentas === 'usuarios' ? 'Usuarios registrados' : 'Desarrolladores registrados' }}</h2>
+                <p>Información de las cuentas registradas.</p>
+              </div>
+              <span class="count-badge">{{ cuentasMostradas.length }} cuentas</span>
+            </div>
+
+            <div class="tabs inner-tabs">
+              <button [class.selected]="filtroCuentas === 'activas'" (click)="filtroCuentas = 'activas'">Cuentas activas</button>
+              <button [class.selected]="filtroCuentas === 'desactivadas'" (click)="filtroCuentas = 'desactivadas'">Cuentas desactivadas</button>
+            </div>
+
+            <div class="search-box">
+              <span>⌕</span>
+              <input type="text" [(ngModel)]="busqueda" placeholder="Buscar por usuario o correo electrónico...">
+            </div>
+
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>CUENTA</th><th>CORREO ELECTRÓNICO</th><th>REGISTRO</th><th>ESTADO</th><th>ACCIONES</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (cuenta of cuentasMostradas; track cuenta.id) {
+                    <tr>
+                      <td><div class="person-cell"><span class="person-avatar">{{ cuenta.foto }}</span><strong>{{ cuenta.nombre }}</strong></div></td>
+                      <td>{{ cuenta.correo }}</td>
+                      <td>{{ cuenta.fecha }}</td>
+                      <td><span class="status" [class.status-danger]="cuenta.estado === 'Suspendido'" [class.status-muted]="cuenta.estado === 'Desactivado'">{{ cuenta.estado }}</span></td>
+                      <td>
+                        <div class="actions">
+                          <button class="small-button" (click)="abrirDetalle(cuenta, 'Información de cuenta')">Ver perfil</button>
+                          @if (filtroCuentas === 'desactivadas') {
+                            <button class="small-button success-button" (click)="cambiarEstadoCuenta(cuenta, 'reactivar')">Reactivar</button>
+                          } @else {
+                            @if (cuenta.estado === 'Activo') {
+                              <button class="small-button warning-button" (click)="cambiarEstadoCuenta(cuenta, 'suspender')">Suspender</button>
+                            } @else {
+                              <button class="small-button success-button" (click)="cambiarEstadoCuenta(cuenta, 'reactivar')">Reactivar</button>
+                            }
+                            <button class="small-button danger-button" (click)="cambiarEstadoCuenta(cuenta, 'desactivar')">Desactivar</button>
+                          }
+                          @if (pestanaCuentas === 'desarrolladores') {
+                            <button class="small-button" (click)="verPerfilPublico(cuenta)">Perfil público</button>
+                          }
+                        </div>
+                      </td>
+                    </tr>
+                  } @empty {
+                    <tr><td colspan="5" class="empty-message">No se encontraron cuentas en esta lista.</td></tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+            @if (pestanaCuentas === 'desarrolladores') {
+              <div class="info-note"><span>✧</span> Desde el perfil público puedes consultar las novelas y los muros de fanarts del desarrollador.</div>
+            }
+          </div>
+        </section>
+      }
+
+      <!-- ADMINISTRADORES -->
+      @if (seccion === 'administradores') {
+        <section>
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">CONTROL DE ACCESO</span>
+              <h1>Administradores</h1>
+              <p>Gestiona las cuentas con permisos administrativos.</p>
+            </div>
+            @if (rolActual === 'Propietaria') {
+              <button class="primary-button" (click)="abrirCrearAdmin()">＋ Crear administrador</button>
+            }
+          </div>
+
+          <div class="content-card">
+            <div class="card-heading">
+              <div><h2>Administradores registrados</h2><p>Personas autorizadas para supervisar Phanny Games.</p></div>
+              <span class="count-badge">{{ administradores.length }} administradores</span>
+            </div>
+
+            <div class="table-container">
+              <table>
+                <thead><tr><th>ADMINISTRADOR</th><th>CORREO ELECTRÓNICO</th><th>ROL</th><th>CREACIÓN</th><th>ESTADO</th><th>ACCIONES</th></tr></thead>
+                <tbody>
+                  @for (admin of administradores; track admin.id) {
+                    <tr>
+                      <td><div class="person-cell"><span class="person-avatar">{{ admin.foto }}</span><strong>{{ admin.nombre }}</strong></div></td>
+                      <td>{{ admin.correo }}</td>
+                      <td>{{ admin.rol }}</td>
+                      <td>{{ admin.fecha }}</td>
+                      <td><span class="status" [class.status-danger]="admin.estado === 'Suspendido'">{{ admin.estado }}</span></td>
+                      <td>
+                        <div class="actions">
+                          <button class="small-button" (click)="abrirDetalle(admin, 'Administrador')">Consultar</button>
+                          @if (rolActual === 'Propietaria' && admin.rol !== 'Propietaria') {
+                            @if (admin.estado === 'Activo') {
+                              <button class="small-button warning-button" (click)="abrirConfirmacion(admin, 'administrador', 'suspender')">Suspender</button>
+                            } @else {
+                              <button class="small-button success-button" (click)="abrirConfirmacion(admin, 'administrador', 'reactivar')">Reactivar</button>
+                            }
+                          }
+                        </div>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+
+            <div class="info-note"><span>🔒</span> La propietaria tiene el control principal. Los administradores no pueden crear cuentas administrativas ni consultar la bitácora. La cuenta de la propietaria está protegida.</div>
+          </div>
+        </section>
+      }
+
+      <!-- MODERACIÓN -->
+      @if (seccion === 'moderacion') {
+        <section>
+          <div class="section-heading">
+            <div><span class="eyebrow">SUPERVISIÓN DE LA PLATAFORMA</span><h1>Moderación de contenido</h1><p>Consulta, retira y restaura el contenido publicado.</p></div>
+            <span class="heading-icon">▣</span>
+          </div>
+
+          <div class="tabs">
+            <button [class.selected]="pestanaContenido === 'novelas'" (click)="pestanaContenido = 'novelas'">Novelas</button>
+            <button [class.selected]="pestanaContenido === 'muros'" (click)="pestanaContenido = 'muros'">Muros</button>
+            <button [class.selected]="pestanaContenido === 'fanarts'" (click)="pestanaContenido = 'fanarts'">Fanarts</button>
+          </div>
+
+          <div class="content-card">
+            <div class="card-heading">
+              <div>
+                <h2>
+                  @if (pestanaContenido === 'novelas') { Novelas publicadas }
+                  @if (pestanaContenido === 'muros') { Muros de fanarts }
+                  @if (pestanaContenido === 'fanarts') { Fanarts publicados }
+                </h2>
+                <p>El contenido retirado se conserva y puede restaurarse.</p>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table>
+                <thead><tr><th>CONTENIDO</th><th>AUTOR</th><th>PUBLICACIÓN</th><th>ESTADO</th><th>ACCIONES</th></tr></thead>
+                <tbody>
+                  @if (pestanaContenido === 'novelas') {
+                    @for (item of novelas; track item.id) {
+                      <tr>
+                        <td><strong>{{ item.titulo }}</strong></td><td>{{ item.autor }}</td><td>{{ item.fecha }}</td>
+                        <td><span class="status" [class.status-danger]="item.estado === 'Eliminado'" [class.status-warning]="item.estado === 'Reportado' || item.estado === 'En revisión'">{{ item.estado }}</span></td>
+                        <td><div class="actions">
+                          <button class="small-button" (click)="abrirDetalle(item, 'Novela')">Ver contenido</button>
+                          @if (item.estado === 'Eliminado') {
+                            <button class="small-button success-button" (click)="abrirConfirmacion(item, 'contenido', 'restaurar')">Restaurar</button>
+                          } @else if (item.estado === 'Apelación en revisión') {
+                            <button class="small-button warning-button" (click)="abrirDetalle(item, 'Apelación en revisión')">Consultar apelación</button>
+                          } @else {
+                            @if (item.estado === 'Reportado' || item.estado === 'En revisión') {
+                              <button class="small-button warning-button" (click)="abrirDetalle(item, 'Revisión de novela')">Revisar</button>
+                            }
+                            <button class="small-button danger-button" (click)="abrirConfirmacion(item, 'contenido', 'retirar')">Retirar</button>
+                          }
+                        </div></td>
+                      </tr>
+                    } @empty { <tr><td colspan="5" class="empty-message">No hay novelas registradas.</td></tr> }
+                  }
+
+                  @if (pestanaContenido === 'muros') {
+                    @for (item of muros; track item.id) {
+                      <tr>
+                        <td><strong>{{ item.titulo }}</strong></td><td>{{ item.autor }}</td><td>{{ item.fecha }}</td>
+                        <td><span class="status" [class.status-danger]="item.estado === 'Eliminado'" [class.status-warning]="item.estado === 'Reportado' || item.estado === 'En revisión'">{{ item.estado }}</span></td>
+                        <td><div class="actions">
+                          <button class="small-button" (click)="abrirDetalle(item, 'Muro de fanarts')">Ver contenido</button>
+                          @if (item.estado === 'Eliminado') {
+                            <button class="small-button success-button" (click)="abrirConfirmacion(item, 'contenido', 'restaurar')">Restaurar</button>
+                          } @else if (item.estado === 'Apelación en revisión') {
+                            <button class="small-button warning-button" (click)="abrirDetalle(item, 'Apelación en revisión')">Consultar apelación</button>
+                          } @else {
+                            @if (item.estado === 'Reportado' || item.estado === 'En revisión') {
+                              <button class="small-button warning-button" (click)="abrirDetalle(item, 'Revisión de muro')">Revisar</button>
+                            }
+                            <button class="small-button danger-button" (click)="abrirConfirmacion(item, 'contenido', 'retirar')">Retirar</button>
+                          }
+                        </div></td>
+                      </tr>
+                    } @empty { <tr><td colspan="5" class="empty-message">No hay muros registrados.</td></tr> }
+                  }
+
+                  @if (pestanaContenido === 'fanarts') {
+                    @for (item of fanarts; track item.id) {
+                      <tr>
+                        <td><strong>{{ item.titulo }}</strong></td><td>{{ item.autor }}</td><td>{{ item.fecha }}</td>
+                        <td><span class="status" [class.status-danger]="item.estado === 'Eliminado'" [class.status-warning]="item.estado === 'Reportado' || item.estado === 'En revisión'">{{ item.estado }}</span></td>
+                        <td><div class="actions">
+                          <button class="small-button" (click)="abrirDetalle(item, 'Fanart')">Ver fanart</button>
+                          @if (item.estado === 'Eliminado') {
+                            <button class="small-button success-button" (click)="abrirConfirmacion(item, 'contenido', 'restaurar')">Restaurar</button>
+                          } @else if (item.estado === 'Apelación en revisión') {
+                            <button class="small-button warning-button" (click)="abrirDetalle(item, 'Apelación en revisión')">Consultar apelación</button>
+                          } @else {
+                            @if (item.estado === 'Reportado' || item.estado === 'En revisión') {
+                              <button class="small-button warning-button" (click)="abrirDetalle(item, 'Revisión de fanart')">Revisar</button>
+                            }
+                            <button class="small-button danger-button" (click)="abrirConfirmacion(item, 'contenido', 'retirar')">Retirar</button>
+                          }
+                        </div></td>
+                      </tr>
+                    } @empty { <tr><td colspan="5" class="empty-message">No hay fanarts registrados.</td></tr> }
+                  }
+                </tbody>
+              </table>
+            </div>
+            <div class="info-note"><span>✧</span> Retirar oculta el contenido de la plataforma, pero conserva sus datos para futuras apelaciones o restauraciones.</div>
+          </div>
+        </section>
+      }
+
+      <!-- REPORTES Y APELACIONES -->
+      @if (seccion === 'reportes') {
+        <section>
+          <div class="section-heading">
+            <div><span class="eyebrow">REVISIÓN DE INCIDENCIAS</span><h1>Reportes y apelaciones</h1><p>Consulta los casos enviados por la comunidad.</p></div>
+            <span class="heading-icon">⚑</span>
+          </div>
+
+          <div class="tabs">
+            <button [class.selected]="pestanaReportes === 'reportes'" (click)="pestanaReportes = 'reportes'">Reportes</button>
+            <button [class.selected]="pestanaReportes === 'apelaciones'" (click)="pestanaReportes = 'apelaciones'">Apelaciones</button>
+          </div>
+
+          <div class="content-card">
+            @if (pestanaReportes === 'reportes') {
+              <div class="card-heading"><div><h2>Reportes recibidos</h2><p>Consulta el motivo y revisa el elemento denunciado.</p></div><span class="count-badge">{{ reportes.length }} reportes</span></div>
+              <div class="table-container">
+                <table>
+                  <thead><tr><th>ELEMENTO REPORTADO</th><th>TIPO</th><th>MOTIVO</th><th>FECHA</th><th>ESTADO</th><th>ACCIONES</th></tr></thead>
+                  <tbody>
+                    @for (reporte of reportes; track reporte.id) {
+                      <tr>
+                        <td><strong>{{ reporte.elemento }}</strong></td><td>{{ reporte.tipo }}</td><td>{{ reporte.motivo }}</td><td>{{ reporte.fecha }}</td>
+                        <td><span class="status" [class.status-success]="reporte.estado === 'Revisado'">{{ reporte.estado }}</span></td>
+                        <td><div class="actions">
+                          <button class="small-button" (click)="abrirDetalle(reporte, 'Detalle del reporte')">Consultar</button>
+                          @if (reporte.tipo === 'Fanart') {
+                            <button class="small-button" (click)="abrirDetalle(fanarts[1], 'Fanart reportado')">Ver fanart</button>
+                          } @else if (reporte.tipo === 'Novela') {
+                            <button class="small-button" (click)="abrirDetalle(novelas[1], 'Novela reportada')">Ver contenido</button>
+                          } @else {
+                            <button class="small-button" (click)="abrirDetalle(usuarios[0], 'Cuenta reportada')">Ver cuenta</button>
+                          }
+                          <button class="small-button success-button" [disabled]="reporte.estado === 'Revisado'" (click)="resolverReporte(reporte)">Resolver</button>
+                        </div></td>
+                      </tr>
+                    } @empty { <tr><td colspan="6" class="empty-message">No hay reportes registrados.</td></tr> }
+                  </tbody>
+                </table>
+              </div>
+            }
+
+            @if (pestanaReportes === 'apelaciones') {
+              <div class="card-heading"><div><h2>Apelaciones recibidas</h2><p>Solicitudes de revisión de contenido retirado.</p></div><span class="count-badge">{{ apelaciones.length }} apelaciones</span></div>
+              <div class="appeal-list">
+                @for (apelacion of apelaciones; track apelacion.id) {
+                  <div class="appeal-item">
+                    <div class="appeal-top">
+                      <div><strong>{{ apelacion.elemento }}</strong><small>Autor: {{ apelacion.autor }} · {{ apelacion.fecha }}</small></div>
+                      <span class="status" [class.status-success]="apelacion.estado === 'Aceptada'" [class.status-danger]="apelacion.estado === 'Rechazada'">{{ apelacion.estado }}</span>
+                    </div>
+                    <p>{{ apelacion.motivo }}</p>
+                    <div class="actions">
+                      <button class="small-button" (click)="abrirDetalle(apelacion, 'Apelación')">Consultar</button>
+                      <button class="small-button success-button" [disabled]="apelacion.estado !== 'Pendiente'" (click)="resolverApelacion(apelacion, 'Aceptada')">Aceptar y restaurar</button>
+                      <button class="small-button danger-button" [disabled]="apelacion.estado !== 'Pendiente'" (click)="resolverApelacion(apelacion, 'Rechazada')">Rechazar</button>
+                    </div>
+                  </div>
+                } @empty { <p class="empty-message">No hay apelaciones registradas.</p> }
+              </div>
+            }
+          </div>
+        </section>
+      }
+
+      <!-- REGISTRO DE ACTIVIDAD -->
+      @if (seccion === 'actividad' && rolActual === 'Propietaria') {
+        <section>
+          <div class="section-heading"><div><span class="eyebrow">HISTORIAL ADMINISTRATIVO</span><h1>Registro de actividad</h1><p>Consulta las acciones realizadas por los administradores.</p></div><span class="heading-icon">◷</span></div>
+          <div class="content-card">
+            <div class="card-heading"><div><h2>Bitácora de actividad</h2><p>Registros ordenados del más reciente al más antiguo.</p></div><span class="count-badge">{{ actividades.length }} registros</span></div>
+            <div class="search-box"><span>⌕</span><input type="text" [(ngModel)]="busquedaActividad" placeholder="Buscar por administrador, acción o elemento..."></div>
+            <div class="table-container">
+              <table>
+                <thead><tr><th>ADMINISTRADOR</th><th>ACCIÓN</th><th>ELEMENTO AFECTADO</th><th>FECHA Y HORA</th><th>RESULTADO</th></tr></thead>
+                <tbody>
+                  @for (actividad of actividadesMostradas; track actividad.id) {
+                    <tr><td><strong>{{ actividad.admin }}</strong></td><td>{{ actividad.accion }}</td><td>{{ actividad.elemento }}</td><td>{{ actividad.fecha }}</td><td><span class="status status-success">{{ actividad.resultado }}</span></td></tr>
+                  } @empty { <tr><td colspan="5" class="empty-message">No se encontraron registros.</td></tr> }
+                </tbody>
+              </table>
+            </div>
+            <div class="info-note"><span>🔒</span> La bitácora es de solo lectura desde la página. Los registros reales se conservarán en Firebase Realtime Database y no tendrán controles para editarlos o borrarlos.</div>
+          </div>
+        </section>
+      }
+    </main>
+  </div>
+</div>
+
+<!-- MODAL: DETALLES Y VISTA DE CONTENIDO -->
+@if (detalle) {
+  <div class="modal-backdrop" (click)="cerrarDetalle()">
+    <div class="modal-card" [class.content-preview-modal]="detalle.tipo === 'Fanart' || detalle.tipo === 'Fanart reportado'" (click)="$event.stopPropagation()">
+      <div class="modal-heading">
+        <div><span class="eyebrow">INFORMACIÓN</span><h2>{{ detalle.tipo }}</h2></div>
+        <button class="close-button" (click)="cerrarDetalle()">×</button>
+      </div>
+
+      @if (detalle.imagen) {
+        <div class="fanart-preview"><span>{{ detalle.imagen }}</span></div>
+      }
+      @if (detalle.descripcion) {
+        <p class="preview-description">{{ detalle.descripcion }}</p>
+      }
+      @for (campo of (detalle | keyvalue); track campo.key) {
+        @if (campo.key !== 'id' && campo.key !== 'foto' && campo.key !== 'tipo' && campo.key !== 'imagen' && campo.key !== 'descripcion') {
+          <div class="detail-row"><span>{{ campo.key }}</span><strong>{{ campo.value }}</strong></div>
+        }
+      }
+      <button class="primary-button full-button modal-close-action" (click)="cerrarDetalle()">Cerrar</button>
+    </div>
+  </div>
+}
+
+<!-- MODAL: CONFIRMAR ACCIÓN -->
+@if (confirmacion) {
+  <div class="modal-backdrop" (click)="cancelarEliminar()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-heading">
+        <div><span class="eyebrow">CONFIRMACIÓN</span><h2>¿Deseas continuar?</h2></div>
+        <button class="close-button" (click)="cancelarEliminar()">×</button>
+      </div>
+      <p class="modal-description">
+        @if (confirmacion.accion === 'restaurar') { Se restaurará <strong>{{ confirmacion.item.titulo }}</strong> y volverá a estar publicado. }
+        @else if (confirmacion.accion === 'suspender') { Se suspenderá el acceso administrativo de <strong>{{ confirmacion.item.nombre }}</strong>. }
+        @else if (confirmacion.accion === 'reactivar') { Se reactivará la cuenta administrativa de <strong>{{ confirmacion.item.nombre }}</strong>. }
+        @else { Se retirará <strong>{{ confirmacion.item.titulo }}</strong> de la plataforma, pero sus datos se conservarán. }
+      </p>
+      <div class="actions modal-actions">
+        <button class="secondary-button" (click)="cancelarEliminar()">Cancelar</button>
+        <button class="primary-button" [class.danger-main]="confirmacion.accion !== 'restaurar'" (click)="confirmarEliminar()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- MODAL: EDITAR PERFIL ADMINISTRATIVO -->
+@if (mostrarEditarPerfil) {
+  <div class="modal-backdrop" (click)="mostrarEditarPerfil = false">
+    <div class="modal-card admin-form-modal" (click)="$event.stopPropagation()">
+      <div class="modal-heading">
+        <div><span class="eyebrow">MI CUENTA</span><h2>Editar perfil</h2><p>Actualiza la información de tu cuenta administrativa.</p></div>
+        <button class="close-button" (click)="mostrarEditarPerfil = false">×</button>
+      </div>
+      <div class="form-fields">
+        <label>Nombre</label><input type="text" [(ngModel)]="nuevoNombreAdmin" placeholder="Nombre del administrador">
+        <label>Foto de perfil (emoji de ejemplo)</label><input type="text" [(ngModel)]="nuevaFotoAdmin" placeholder="👑">
+        <label>Nueva contraseña</label><input type="password" [(ngModel)]="nuevaContrasenaAdmin" placeholder="Dejar vacío para no cambiarla">
+        <label>Confirmar contraseña</label><input type="password" [(ngModel)]="confirmarContrasenaAdmin" placeholder="Repite la nueva contraseña">
+      </div>
+      <div class="actions modal-actions">
+        <button class="secondary-button" (click)="mostrarEditarPerfil = false">Cancelar</button>
+        <button class="primary-button" (click)="guardarPerfilAdmin()">Guardar cambios</button>
+      </div>
+      <p class="form-note">Los cambios son demostrativos. La actualización real de contraseña y foto se conectará posteriormente.</p>
+    </div>
+  </div>
+}
+
+<!-- MODAL: CREAR ADMINISTRADOR -->
+@if (mostrarCrearAdmin) {
+  <div class="modal-backdrop" (click)="cancelarCrearAdmin()">
+    <div class="modal-card admin-form-modal" (click)="$event.stopPropagation()">
+      <div class="modal-heading">
+        <div><span class="eyebrow">GESTIÓN DE ACCESO</span><h2>Crear administrador</h2><p>Completa el proceso de registro.</p></div>
+        <button class="close-button" (click)="cancelarCrearAdmin()">×</button>
+      </div>
+      <div class="step-indicator">
+        <div [class.step-active]="pasoAdmin === 1"><span>1</span> Datos básicos</div>
+        <div class="step-line"></div>
+        <div [class.step-active]="pasoAdmin === 2"><span>2</span> Confirmación</div>
+      </div>
+      @if (pasoAdmin === 1) {
+        <div class="form-fields">
+          <label>Nombre completo</label><input type="text" [(ngModel)]="nuevoNombre" placeholder="Nombre del administrador">
+          <label>Correo electrónico</label><input type="email" [(ngModel)]="nuevoCorreo" placeholder="correo@ejemplo.com">
+          <label>Contraseña</label><input type="password" [(ngModel)]="nuevaContrasena" placeholder="Escribe una contraseña">
+          <label>Confirmar contraseña</label><input type="password" [(ngModel)]="confirmarContrasena" placeholder="Repite la contraseña">
+        </div>
+        <div class="actions modal-actions"><button class="secondary-button" (click)="cancelarCrearAdmin()">Cancelar</button><button class="primary-button" (click)="siguientePasoAdmin()">Continuar →</button></div>
+      }
+      @if (pasoAdmin === 2) {
+        <div class="review-box">
+          <h3>Revisa los datos</h3>
+          <div class="detail-row"><span>Nombre</span><strong>{{ nuevoNombre }}</strong></div>
+          <div class="detail-row"><span>Correo</span><strong>{{ nuevoCorreo }}</strong></div>
+          <div class="detail-row"><span>Rol</span><strong>Administrador</strong></div>
+          <p>Este registro es una demostración local. La creación real se conectará posteriormente con Firebase.</p>
+        </div>
+        <div class="actions modal-actions"><button class="secondary-button" (click)="pasoAdmin = 1">← Regresar</button><button class="primary-button" (click)="guardarAdmin()">Guardar administrador</button></div>
+      }
+    </div>
+  </div>
+}
+
+<!-- AVISO -->
+@if (mostrarMensaje) {
+  <div class="notice-backdrop" (click)="cerrarAviso()">
+    <div class="notice-card" (click)="$event.stopPropagation()">
+      <span class="notice-icon">✧</span><h3>Phanny Games</h3><p>{{ mensaje }}</p>
+      <button class="primary-button full-button" (click)="cerrarAviso()">Aceptar</button>
+    </div>
+  </div>
+}

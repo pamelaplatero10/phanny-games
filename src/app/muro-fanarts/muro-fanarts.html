@@ -1,0 +1,109 @@
+
+<main class="pantalla-muro">
+
+  <!-- ENCABEZADO -->
+  <header class="muro-encabezado">
+
+    <a routerLink="/home" class="muro-volver">
+      ← Volver a Phanny Games
+    </a>
+
+    <p class="muro-etiqueta">✧ COMUNIDAD PHANNY GAMES ✧</p>
+
+    <h1>Comunidades de novelas</h1>
+
+    <p class="muro-descripcion">
+      Explora los espacios de nuestra comunidad y descubre
+      las creaciones inspiradas en tus novelas favoritas.
+    </p>
+
+  </header>
+
+  <!-- COMUNIDADES -->
+  <section class="muro-galeria">
+
+    <!-- ARCANIA -->
+    <article class="fanart-tarjeta">
+
+      <a [routerLink]="['/muro-novela', 'arcania']"
+         class="fanart-enlace">
+
+        <div class="fanart-imagen">
+          <span>✦</span>
+          <p>PORTADA DE LA NOVELA</p>
+        </div>
+
+        <div class="fanart-informacion">
+          <h2>Arcania</h2>
+          <p>Autora: Autora de prueba</p>
+        </div>
+
+      </a>
+
+    </article>
+
+    <!-- ECOS DE MEDIANOCHE -->
+    <article class="fanart-tarjeta">
+
+      <a [routerLink]="['/muro-novela', 'ecos-de-medianoche']"
+         class="fanart-enlace">
+
+        <div class="fanart-imagen">
+          <span>✧</span>
+          <p>PORTADA DE LA NOVELA</p>
+        </div>
+
+        <div class="fanart-informacion">
+          <h2>Ecos de medianoche</h2>
+          <p>Autor: Autor de prueba</p>
+        </div>
+
+      </a>
+
+    </article>
+
+    <!-- ENTRE ESTRELLAS -->
+    <article class="fanart-tarjeta">
+
+      <a [routerLink]="['/muro-novela', 'entre-estrellas']"
+         class="fanart-enlace">
+
+        <div class="fanart-imagen">
+          <span>✦</span>
+          <p>PORTADA DE LA NOVELA</p>
+        </div>
+
+        <div class="fanart-informacion">
+          <h2>Entre estrellas</h2>
+          <p>Autora: Autora de prueba</p>
+        </div>
+
+      </a>
+
+    </article>
+
+
+    <!-- SUSURROS DE CRISTAL -->
+    <article class="fanart-tarjeta">
+
+      <a [routerLink]="['/muro-novela', 'susurros-de-cristal']"
+         class="fanart-enlace">
+
+        <div class="fanart-imagen">
+          <span>✧</span>
+          <p>PORTADA DE LA NOVELA</p>
+        </div>
+
+        <div class="fanart-informacion">
+          <h2>Susurros de cristal</h2>
+          <p>Autora: Autora de prueba</p>
+        </div>
+
+      </a>
+
+    </article>
+
+
+  </section>
+
+</main>

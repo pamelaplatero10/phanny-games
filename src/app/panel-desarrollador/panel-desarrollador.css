@@ -1,0 +1,437 @@
+
+/* PANTALLA PRINCIPAL */
+.panel-desarrollador {
+  min-height: 100vh;
+  padding: 40px 7% 60px;
+  color: #F8FAFC;
+}
+
+/* ENCABEZADO */
+.panel-encabezado {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.panel-encabezado h1 {
+  margin: 0 0 8px;
+  color: #F8FAFC;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.panel-encabezado p {
+  margin: 0;
+  color: #B8C7DF;
+  font-size: 14px;
+}
+
+/* TARJETA DEL DESARROLLADOR */
+.panel-perfil {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 35px;
+  background: rgba(29, 53, 87, 0.65);
+  border: 1px solid rgba(100, 127, 166, 0.55);
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 22px rgba(37, 99, 235, 0.12);
+  transition: 0.3s;
+}
+
+.panel-perfil:hover {
+  border-color: #38BDF8;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.16);
+}
+
+/* AVATAR */
+.panel-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 125px;
+  height: 125px;
+  border: 2px solid #38BDF8;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #172B49, #31245D);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.3);
+}
+
+.panel-avatar span {
+  color: #F8FAFC;
+  font-size: 42px;
+  text-shadow: 0 0 12px #38BDF8;
+}
+
+/* DATOS DEL DESARROLLADOR */
+.panel-datos {
+  flex: 1;
+}
+
+.panel-rol {
+  display: inline-block;
+  padding: 5px 13px;
+  color: #38BDF8;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 20px;
+}
+
+.panel-datos h2 {
+  margin: 12px 0 8px;
+  color: #F8FAFC;
+  font-size: 25px;
+}
+
+.panel-biografia {
+  margin: 0 0 18px;
+  color: #B8C7DF;
+  font-size: 14px;
+}
+
+/* BOTÓN EDITAR PERFIL */
+.panel-editar {
+  padding: 9px 18px;
+  color: #F8FAFC;
+  background: transparent;
+  border: 1px solid #38BDF8;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.panel-editar:hover {
+  color: #0B132B;
+  background: #38BDF8;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+/* ADAPTACIÓN A PANTALLAS PEQUEÑAS */
+@media (max-width: 600px) {
+
+  .panel-desarrollador {
+    padding: 30px 5%;
+  }
+
+  .panel-perfil {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 18px;
+  }
+
+  .panel-avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .panel-datos h2 {
+    font-size: 22px;
+  }
+
+}
+
+
+/* SECCIÓN DE NOVELAS */
+.panel-novelas {
+  width: 100%;
+  max-width: 1100px;
+  margin: 45px auto 0;
+}
+
+.panel-seccion-encabezado {
+  margin-bottom: 22px;
+}
+
+.panel-seccion-encabezado h2 {
+  color: #F8FAFC;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* TARJETA HORIZONTAL */
+.novela-desarrollador {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: rgba(29, 53, 87, 0.65);
+  border: 1px solid rgba(100, 127, 166, 0.55);
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 18px rgba(37, 99, 235, 0.10);
+  transition: 0.3s;
+}
+
+.novela-desarrollador:hover {
+  border-color: #38BDF8;
+  box-shadow: 0 0 22px rgba(56, 189, 248, 0.15);
+}
+
+/* PORTADAS PROVISIONALES */
+.novela-portada {
+  flex-shrink: 0;
+  width: 115px;
+  height: 145px;
+  border-radius: 10px;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.15);
+}
+
+.portada-1 {
+  background: linear-gradient(145deg, #172B49, #31245D, #0B132B);
+}
+
+.portada-2 {
+  background: linear-gradient(145deg, #1D3557, #2563EB, #172B49);
+}
+
+/* INFORMACIÓN DE LA NOVELA */
+.novela-datos {
+  flex: 1;
+  min-width: 150px;
+}
+
+.novela-datos h3 {
+  color: #F8FAFC;
+  font-size: 19px;
+  margin: 0 0 8px;
+}
+
+.novela-datos p {
+  color: #B8C7DF;
+  font-size: 13px;
+  margin: 0 0 13px;
+}
+
+/* ESTADOS */
+.novela-estado {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.novela-estado.publicada {
+  color: #38BDF8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.novela-estado.borrador {
+  color: #C4B5FD;
+  background: rgba(196, 181, 253, 0.12);
+  border: 1px solid rgba(196, 181, 253, 0.4);
+}
+
+/* BOTONES DE ADMINISTRACIÓN */
+.novela-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 175px;
+}
+
+.novela-acciones button {
+  width: 100%;
+  padding: 9px 12px;
+  color: #F8FAFC;
+  background: rgba(23, 43, 73, 0.8);
+  border: 1px solid rgba(100, 127, 166, 0.65);
+  border-radius: 7px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.novela-acciones button:hover {
+  color: #0B132B;
+  background: #38BDF8;
+  border-color: #38BDF8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+}
+
+/* ADAPTACIÓN A PANTALLAS PEQUEÑAS */
+@media (max-width: 750px) {
+  .novela-desarrollador {
+    flex-wrap: wrap;
+  }
+
+  .novela-datos {
+    min-width: 180px;
+  }
+
+  .novela-acciones {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .novela-acciones button {
+    flex: 1;
+    min-width: 140px;
+  }
+}
+
+
+/* SECCIÓN CREAR NOVELA */
+.panel-crear-novela {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1100px;
+  margin: 30px auto 0;
+}
+
+/* BOTÓN CREAR Y PUBLICAR */
+.boton-crear-novela {
+  padding: 15px 35px;
+  color: #F8FAFC;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #2563EB, #31245D);
+  border: 1px solid #38BDF8;
+  border-radius: 10px;
+  box-shadow: 0 0 18px rgba(37, 99, 235, 0.25);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.boton-crear-novela:hover {
+  background: linear-gradient(135deg, #38BDF8, #2563EB);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+  transform: translateY(-2px);
+}
+
+
+/* SECCIÓN MIS MUROS */
+.panel-muros {
+  width: 100%;
+  max-width: 1100px;
+  margin: 55px auto 0;
+}
+
+.panel-muros .panel-seccion-encabezado {
+  margin-bottom: 22px;
+}
+
+.panel-muros .panel-seccion-encabezado p {
+  margin: 7px 0 0;
+  color: #B8C7DF;
+  font-size: 13px;
+}
+
+/* TARJETAS DE LOS MUROS */
+.muro-desarrollador {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 22px 25px;
+  background: rgba(29, 53, 87, 0.65);
+  border: 1px solid rgba(100, 127, 166, 0.55);
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 16px rgba(37, 99, 235, 0.10);
+  transition: 0.3s;
+}
+
+.muro-desarrollador:hover {
+  border-color: #38BDF8;
+  box-shadow: 0 0 22px rgba(56, 189, 248, 0.14);
+}
+
+/* INFORMACIÓN DEL MURO */
+.muro-informacion {
+  flex: 1;
+}
+
+.muro-informacion h3 {
+  margin: 0 0 12px;
+  color: #F8FAFC;
+  font-size: 17px;
+}
+
+.muro-informacion p {
+  margin: 10px 0 0;
+  color: #B8C7DF;
+  font-size: 12px;
+}
+
+/* ESTADOS */
+.muro-estado {
+  display: inline-block;
+  padding: 6px 13px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.muro-estado.creado {
+  color: #38BDF8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.muro-estado.sin-crear {
+  color: #C4B5FD;
+  background: rgba(196, 181, 253, 0.12);
+  border: 1px solid rgba(196, 181, 253, 0.4);
+}
+
+/* BOTONES */
+.muro-acciones {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.muro-acciones button {
+  padding: 10px 17px;
+  color: #F8FAFC;
+  background: rgba(23, 43, 73, 0.8);
+  border: 1px solid rgba(100, 127, 166, 0.65);
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.muro-acciones button:hover {
+  color: #0B132B;
+  background: #38BDF8;
+  border-color: #38BDF8;
+  box-shadow: 0 0 13px rgba(56, 189, 248, 0.25);
+}
+
+/* PANTALLAS PEQUEÑAS */
+@media (max-width: 650px) {
+  .muro-desarrollador {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .muro-acciones {
+    width: 100%;
+  }
+
+  .muro-acciones button {
+    flex: 1;
+  }
+}

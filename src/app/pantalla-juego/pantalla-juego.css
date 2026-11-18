@@ -1,0 +1,296 @@
+
+
+/* PANTALLA PRINCIPAL */
+.pantalla-juego {
+  min-height: 100vh;
+  padding: 25px 5% 50px;
+  color: #F8FAFC;
+}
+
+/* BARRA SUPERIOR */
+.juego-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  min-height: 35px;
+}
+
+.juego-encabezado h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: #F8FAFC;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.juego-volver,
+.juego-cuenta {
+  color: #F8FAFC;
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.juego-volver:hover,
+.juego-cuenta:hover {
+  color: #38BDF8;
+}
+
+/* LÍNEA SEPARADORA */
+.juego-separador {
+  width: 100%;
+  height: 1px;
+  margin: 22px 0 0;
+  background: rgba(100, 127, 166, 0.45);
+}
+
+/* REPRODUCTOR PRINCIPAL */
+.juego-reproductor {
+  width: 85%;
+  aspect-ratio: 16 / 9;
+  margin: 45px auto 25px;
+  border: 1px solid #38BDF8;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0B132B;
+  box-shadow:
+    0 0 12px rgba(56, 189, 248, 0.25),
+    0 0 28px rgba(37, 99, 235, 0.15);
+}
+
+.reproductor-contenido {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #101B3C, #1D3557, #172044);
+}
+
+.reproductor-portada {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 45%, #526AAB 0%, transparent 35%),
+    linear-gradient(135deg, #172B49, #31245D, #0B132B);
+  filter: blur(8px);
+  opacity: 0.55;
+}
+
+.reproductor-contenido p {
+  position: relative;
+  z-index: 1;
+  color: #F8FAFC;
+  font-size: 18px;
+  text-shadow: 0 0 12px #0B132B;
+}
+
+/* INFORMACIÓN DE LA NOVELA */
+.juego-informacion {
+  width: 85%;
+  margin: 0 auto 45px;
+}
+
+.juego-informacion h2 {
+  margin: 0 0 8px;
+  color: #F8FAFC;
+  font-size: 23px;
+}
+
+.juego-informacion p {
+  margin: 0;
+  color: #B8C7DF;
+  font-size: 14px;
+}
+
+.juego-informacion strong {
+  color: #38BDF8;
+  font-weight: 600;
+}
+
+/* RECOMENDACIONES */
+.juego-recomendaciones {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.juego-recomendaciones h2 {
+  margin: 0 0 22px;
+  color: #F8FAFC;
+  font-size: 21px;
+}
+
+/* CONTENEDOR DEL CARRUSEL */
+.carrusel-contenedor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+/* FLECHAS */
+.carrusel-flecha {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: #F8FAFC;
+  font-size: 38px;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s;
+}
+
+.carrusel-flecha:hover {
+  color: #38BDF8;
+}
+
+/* FILA DE TARJETAS */
+.carrusel-lista {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carrusel-lista::-webkit-scrollbar {
+  display: none;
+}
+
+/* TARJETAS */
+.novela-recomendada {
+  flex: 0 0 230px;
+  color: #F8FAFC;
+  text-decoration: none;
+  scroll-snap-align: start;
+}
+
+.recomendacion-portada {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(100, 127, 166, 0.65);
+  border-radius: 10px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.novela-recomendada:hover .recomendacion-portada {
+  border-color: #38BDF8;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+}
+
+.novela-recomendada h3 {
+  margin: 10px 0 0;
+  color: #F8FAFC;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* PORTADAS PROVISIONALES */
+.portada-1 {
+  background: linear-gradient(135deg, #172B49, #5B397F);
+}
+
+.portada-2 {
+  background: linear-gradient(135deg, #142A52, #4777A6);
+}
+
+.portada-3 {
+  background: linear-gradient(135deg, #31245D, #A17AB5);
+}
+
+.portada-4 {
+  background: linear-gradient(135deg, #172B49, #7889A8);
+}
+
+.portada-5 {
+  background: linear-gradient(135deg, #243B55, #785A8C);
+}
+
+.portada-6 {
+  background: linear-gradient(135deg, #162A61, #6A7EC4);
+}
+
+.portada-7 {
+  background: linear-gradient(135deg, #38234D, #A45C79);
+}
+
+.portada-8 {
+  background: linear-gradient(135deg, #182B45, #647BA0);
+}
+
+.portada-9 {
+  background: linear-gradient(135deg, #1B4260, #5796B2);
+}
+
+.portada-10 {
+  background: linear-gradient(135deg, #29204D, #7D70AD);
+}
+
+/* ADAPTACIÓN A PANTALLAS PEQUEÑAS */
+@media (max-width: 768px) {
+
+  .pantalla-juego {
+    padding: 20px 4%;
+  }
+
+  .juego-encabezado h1 {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  .juego-volver,
+  .juego-cuenta {
+    font-size: 12px;
+  }
+
+  .juego-reproductor,
+  .juego-informacion {
+    width: 95%;
+  }
+
+  .juego-reproductor {
+    margin-top: 35px;
+  }
+
+  .novela-recomendada {
+    flex-basis: 190px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .juego-encabezado h1 {
+    font-size: 13px;
+  }
+
+  .juego-volver,
+  .juego-cuenta {
+    font-size: 11px;
+  }
+
+  .juego-recomendaciones h2 {
+    font-size: 18px;
+  }
+
+  .novela-recomendada {
+    flex-basis: 160px;
+  }
+
+  .carrusel-contenedor {
+    gap: 4px;
+  }
+
+  .carrusel-flecha {
+    font-size: 30px;
+  }
+
+}

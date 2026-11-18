@@ -1,0 +1,492 @@
+/* =========================================
+   HOME
+========================================= */
+
+.pantalla-home {
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+  padding: 0 6%;
+  background: transparent;
+}
+
+/* ENCABEZADO */
+
+.home-header {
+  min-height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  border-bottom: 1px solid rgba(100, 127, 166, .3);
+}
+
+.home-muro {
+  margin-left: auto;
+}
+
+.home-logo {
+  color: var(--color-texto);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-decoration: none;
+}
+
+.home-logo:hover {
+  color: var(--color-acento);
+  text-decoration: none;
+}
+
+/* ENLACE A LAS COMUNIDADES */
+
+.home-muro {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid rgba(56, 189, 248, .4);
+  border-radius: 10px;
+  background: rgba(29, 53, 87, .65);
+  color: #F8FAFC;
+  text-decoration: none;
+  font-size: .9rem;
+  transition: all .25s;
+}
+
+.home-muro span {
+  color: #38BDF8;
+  font-size: 16px;
+}
+
+.home-muro:hover {
+  background: #1D3557;
+  border-color: #38BDF8;
+  color: #38BDF8;
+  text-decoration: none;
+}
+.home-nav {
+  display: flex;
+  gap: 28px;
+}
+
+.home-nav a {
+  color: var(--color-texto-secundario);
+  text-decoration: none;
+  font-size: .9rem;
+}
+
+.home-nav a:hover {
+  color: var(--color-acento);
+}
+
+.home-login {
+  color: var(--color-texto);
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  padding: 9px 17px;
+  text-decoration: none;
+}
+
+.home-login:hover {
+  color: var(--color-acento);
+  border-color: var(--color-acento);
+}
+
+/* PRESENTACIÓN */
+
+.home-hero {
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 55px 15px;
+}
+
+.home-etiqueta {
+  color: var(--color-acento);
+  font-size: .8rem;
+  letter-spacing: .2em;
+}
+
+.home-hero h1 {
+  color: var(--color-texto);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin: 12px 0;
+}
+
+.home-hero h1 span {
+  display: block;
+  color: var(--color-acento);
+}
+
+.home-descripcion {
+  max-width: 600px;
+  color: var(--color-texto-secundario);
+  line-height: 1.8;
+  margin: 15px auto 25px;
+}
+
+.home-explorar {
+  background: linear-gradient(
+    135deg,
+    var(--color-primario),
+    #1D4ED8
+  );
+
+  color: var(--color-texto);
+  border-radius: 12px;
+  padding: 13px 24px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: .05em;
+  transition: all .25s;
+}
+
+.home-explorar:hover {
+  color: var(--color-texto);
+  box-shadow: 0 5px 25px rgba(56, 189, 248, .25);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* BIBLIOTECA DESTACADA */
+
+.home-biblioteca {
+  max-width: 1100px;
+  margin: 20px auto 70px;
+}
+
+.home-titulo-seccion {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.home-titulo-seccion p {
+  color: var(--color-acento);
+  font-size: .75rem;
+  letter-spacing: .15em;
+}
+
+.home-titulo-seccion h2 {
+  color: var(--color-texto);
+  font-weight: 700;
+}
+
+/* TARJETAS DE NOVELAS */
+
+.novela-card {
+  height: 100%;
+  overflow: hidden;
+
+  background: rgba(29, 53, 87, .8);
+  border: 1px solid rgba(100, 127, 166, .5);
+  border-radius: 16px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+  transition: transform .25s, box-shadow .25s;
+}
+
+.novela-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, .2);
+}
+
+.novela-portada {
+  min-height: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 3.5rem;
+  color: var(--color-acento);
+}
+
+.portada-uno {
+  background: linear-gradient(135deg, #172B49, #2563EB);
+}
+
+.portada-dos {
+  background: linear-gradient(135deg, #1D3557, #4338CA);
+}
+
+.portada-tres {
+  background: linear-gradient(135deg, #172B49, #0E7490);
+}
+
+.novela-info {
+  padding: 20px;
+}
+
+.novela-info h3 {
+  color: var(--color-texto);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.novela-info p {
+  color: var(--color-texto-secundario);
+  font-size: .9rem;
+}
+
+.novela-estado {
+  color: var(--color-acento);
+  font-size: .78rem;
+}
+
+/* PIE DE PÁGINA */
+
+.home-footer {
+  padding: 22px 10px;
+  text-align: center;
+  border-top: 1px solid rgba(100, 127, 166, .3);
+}
+
+.home-footer p {
+  color: var(--color-texto-secundario);
+  font-size: .85rem;
+  margin: 0;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .home-header {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 18px 0;
+  }
+
+  .home-nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .home-hero {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pantalla-home {
+    padding: 0 4%;
+  }
+
+  .home-nav {
+    gap: 12px;
+  }
+
+  .home-nav a {
+    font-size: .8rem;
+  }
+}
+
+.novela-enlace {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.novela-enlace:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.novela-enlace .novela-card {
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.novela-enlace:hover .novela-card {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, .2);
+}
+
+/* DESCRIPCIÓN DEL CATÁLOGO */
+
+.home-titulo-seccion span {
+  display: block;
+  margin-top: 12px;
+  color: var(--color-texto-secundario);
+  font-size: .9rem;
+}
+
+/* FILTROS DE BIBLIOTECA */
+
+.biblioteca-filtros {
+  margin-bottom: 30px;
+}
+
+.biblioteca-filtros p {
+  margin-bottom: 13px;
+  color: var(--color-texto-secundario);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.filtros-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filtro-etiqueta {
+  padding: 8px 17px;
+  border: 1px solid rgba(100, 127, 166, .5);
+  border-radius: 20px;
+  background: rgba(29, 53, 87, .65);
+  color: var(--color-texto-secundario);
+  font-size: .85rem;
+  transition: all .25s;
+}
+
+.filtro-etiqueta:hover,
+.filtro-etiqueta.activo {
+  border-color: var(--color-acento);
+  background: rgba(37, 99, 235, .25);
+  color: var(--color-texto);
+}
+
+.filtro-etiqueta.activo {
+  box-shadow: 0 0 15px rgba(56, 189, 248, .12);
+}
+
+/* RESPONSIVE DE FILTROS */
+
+@media (max-width: 480px) {
+  .filtros-etiquetas {
+    gap: 8px;
+  }
+
+  .filtro-etiqueta {
+    padding: 7px 13px;
+    font-size: .8rem;
+  }
+}
+
+
+/* =========================================
+   BIBLIOTECA COMPLETA
+========================================= */
+
+.home-catalogo {
+  margin-top: 65px;
+  padding: 35px;
+  background: rgba(11, 19, 43, .88);
+  border: 1px solid rgba(100, 127, 166, .45);
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, .25);
+}
+
+/* TÍTULOS DEL CATÁLOGO */
+
+.home-catalogo .home-titulo-seccion p {
+  color: #38BDF8;
+  font-weight: 700;
+}
+
+.home-catalogo .home-titulo-seccion h2 {
+  color: #FFFFFF;
+  font-size: 1.8rem;
+}
+
+.home-catalogo .home-titulo-seccion span {
+  color: #DCE8F8;
+}
+
+/* BUSCADOR */
+
+.biblioteca-busqueda {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 650px;
+  margin: 0 auto 35px;
+  padding: 12px 18px;
+
+  background: #172B49;
+  border: 1px solid #647FA6;
+  border-radius: 12px;
+}
+
+.biblioteca-busqueda span {
+  color: #38BDF8;
+  font-size: 1.5rem;
+}
+
+.biblioteca-busqueda input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #FFFFFF;
+  font-size: .95rem;
+}
+
+.biblioteca-busqueda input::placeholder {
+  color: #B8C7DF;
+  opacity: 1;
+}
+
+/* FILTROS */
+
+.biblioteca-filtros p {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* MENSAJE DE CATÁLOGO VACÍO */
+
+.biblioteca-vacia {
+  margin-top: 35px;
+  padding: 45px 25px;
+  text-align: center;
+
+  background: rgba(29, 53, 87, .85);
+  border: 1px solid rgba(100, 127, 166, .55);
+  border-radius: 16px;
+}
+
+.biblioteca-vacia-icono {
+  color: #38BDF8;
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.biblioteca-vacia h3 {
+  color: #FFFFFF;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.biblioteca-vacia p {
+  max-width: 550px;
+  margin: 0 auto;
+  color: #DCE8F8;
+  line-height: 1.8;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .home-catalogo {
+    padding: 25px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-catalogo {
+    padding: 22px 14px;
+  }
+
+  .home-catalogo .home-titulo-seccion h2 {
+    font-size: 1.45rem;
+  }
+}

@@ -1,0 +1,33 @@
+
+/* =========================================
+   LOGIN
+========================================= */
+
+/* Fondo azul temporal para visualizar el diseño */
+
+.pantalla-auth-login {
+  background-color: var(--color-fondo);
+}
+
+/* Tamaño de la tarjeta */
+
+.pantalla-auth-login .card-auth {
+  max-width: 420px;
+}
+
+/* Texto del formulario */
+
+.pantalla-auth-login .form-check-label {
+  color: var(--color-texto-secundario);
+  font-size: .85rem;
+}
+
+.pantalla-auth-login .form-check-input {
+  background-color: var(--color-input);
+  border-color: var(--color-borde);
+}
+
+.pantalla-auth-login .form-check-input:checked {
+  background-color: var(--color-primario);
+  border-color: var(--color-acento);
+}

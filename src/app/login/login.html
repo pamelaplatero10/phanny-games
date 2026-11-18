@@ -1,0 +1,97 @@
+
+<main class="pantalla-auth pantalla-auth-login">
+
+  <a routerLink="/home" class="auth-back-home">
+    ← Volver al inicio
+  </a>
+
+  <section class="card-auth">
+
+    <div class="card-header-magic">
+      <h1>Bienvenido</h1>
+    </div>
+
+    <div class="card-body">
+
+      <form>
+
+        <div class="form-group mb-3">
+
+          <label for="correo" class="form-label">
+            Correo electrónico
+          </label>
+
+          <div class="input-group">
+            <span class="input-group-text">✉</span>
+
+            <input
+              type="email"
+              id="correo"
+              name="correo"
+              class="form-control"
+              placeholder="Ingresa tu correo"
+            >
+          </div>
+
+        </div>
+
+        <div class="form-group mb-3">
+
+          <label for="contrasena" class="form-label">
+            Contraseña
+          </label>
+
+          <div class="input-group">
+            <span class="input-group-text">♙</span>
+
+            <input
+              type="password"
+              id="contrasena"
+              name="contrasena"
+              class="form-control"
+              placeholder="Ingresa tu contraseña"
+            >
+          </div>
+
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+          <div class="form-check">
+            <input
+              type="checkbox"
+              id="recordarme"
+              name="recordarme"
+              class="form-check-input"
+            >
+
+            <label for="recordarme" class="form-check-label">
+              Recordarme
+            </label>
+          </div>
+
+          <span class="auth-link small">
+            ¿Olvidaste tu contraseña?
+          </span>
+
+        </div>
+
+        <button type="button" class="btn btn-magic">
+          INICIAR SESIÓN ✦
+        </button>
+
+      </form>
+
+      <div class="auth-footer">
+        ¿Aún no tienes cuenta?
+
+        <a routerLink="/registro" class="auth-link font-weight-bold">
+          Regístrate
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>

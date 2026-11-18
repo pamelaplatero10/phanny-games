@@ -1,0 +1,135 @@
+
+
+<main class="pantalla-juego">
+
+  <!-- BARRA SUPERIOR -->
+  <header class="juego-encabezado">
+
+    <a routerLink="/biblioteca" class="juego-volver">
+      ← Atrás
+    </a>
+
+    <h1>PHANNY GAMES ✦</h1>
+
+    <a routerLink="/login" class="juego-cuenta">
+      Iniciar sesión
+    </a>
+
+  </header>
+
+  <div class="juego-separador"></div>
+
+  <!-- REPRODUCTOR PRINCIPAL -->
+  <section class="juego-reproductor">
+
+    <div class="reproductor-contenido">
+
+      <div class="reproductor-portada"></div>
+
+      <p>Preparando novela...</p>
+
+    </div>
+
+  </section>
+
+  <!-- INFORMACIÓN DE LA NOVELA -->
+  <section class="juego-informacion">
+
+    <h2>Nombre de la novela</h2>
+
+    <p>
+      Creada por:
+      <strong>Nombre del desarrollador</strong>
+    </p>
+
+  </section>
+
+  <!-- RECOMENDACIONES -->
+  <section class="juego-recomendaciones">
+
+    <h2>Explora más novelas</h2>
+
+    <div class="carrusel-contenedor">
+
+      <!-- FLECHA IZQUIERDA -->
+      <button
+        class="carrusel-flecha"
+        type="button"
+        aria-label="Ver novelas anteriores"
+        (click)="moverCarrusel(-1)">
+        ‹
+      </button>
+
+      <!-- TARJETAS -->
+      <div
+        class="carrusel-lista"
+        #carrusel
+        (mouseenter)="detenerCarrusel()"
+        (mouseleave)="reanudarCarrusel()">
+
+        <a routerLink="/detalles-novela" class="novela-recomendada">
+          <div class="recomendacion-portada portada-1"></div>
+          <h3>Ecos de medianoche</h3>
+        </a>
+
+        <a routerLink="/detalles-novela" class="novela-recomendada">
+          <div class="recomendacion-portada portada-2"></div>
+          <h3>Entre estrellas</h3>
+        </a>
+
+        <a routerLink="/detalles-novela" class="novela-recomendada">
+          <div class="recomendacion-portada portada-3"></div>
+          <h3>Susurros de cristal</h3>
+        </a>
+
+        <a routerLink="/detalles-novela" class="novela-recomendada">
+          <div class="recomendacion-portada portada-4"></div>
+          <h3>El último invierno</h3>
+        </a>
+
+        <a routerLink="/detalles-novela" class="novela-recomendada">
+          <div class="recomendacion-portada portada-5"></div>
+          <h3>Jardín de recuerdos</h3>
+        </a>
+
+        <a routerLink="/detalles-novela" class="novela-recomendada">
+          <div class="recomendacion-portada portada-6"></div>
+          <h3>Corazón de luna</h3>
+        </a>
+
+        <a routerLink="/detalles-novela" class="novela-recomendada">
+          <div class="recomendacion-portada portada-7"></div>
+          <h3>La última promesa</h3>
+        </a>
+
+        <a routerLink="/detalles-novela" class="novela-recomendada">
+          <div class="recomendacion-portada portada-8"></div>
+          <h3>Fragmentos del ayer</h3>
+        </a>
+
+        <a routerLink="/detalles-novela" class="novela-recomendada">
+          <div class="recomendacion-portada portada-9"></div>
+          <h3>Bajo el cielo azul</h3>
+        </a>
+
+        <a routerLink="/detalles-novela" class="novela-recomendada">
+          <div class="recomendacion-portada portada-10"></div>
+          <h3>Cuando florezcan las estrellas</h3>
+        </a>
+
+      </div>
+
+      <!-- FLECHA DERECHA -->
+      <button
+        class="carrusel-flecha"
+        type="button"
+        aria-label="Ver siguientes novelas"
+        (click)="moverCarrusel(1)">
+        ›
+      </button>
+
+    </div>
+
+  </section>
+
+</main>

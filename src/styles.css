@@ -1,1 +1,263 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================================
+   PHANNY GAMES uwu
+   ESTILOS GENERALES
+========================================= */
+
+/* 1. PALETA OFICIAL */
+
+:root {
+  --color-fondo: #0B132B;
+  --color-superficie: #1D3557;
+  --color-input: #172B49;
+
+  --color-primario: #2563EB;
+  --color-acento: #38BDF8;
+
+  --color-texto: #F8FAFC;
+  --color-texto-secundario: #B8C7DF;
+
+  --color-borde: #647FA6;
+}
+
+/* 2. CONFIGURACIÓN GENERAL */
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+body {
+  min-height: 100vh;
+}
+
+app-root {
+  display: block;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* 3. ESTILOS COMPARTIDOS DE LOGIN Y REGISTRO */
+
+.pantalla-auth {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 16px;
+  position: relative;
+}
+
+.card-auth {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(29, 53, 87, .94),
+    rgba(11, 19, 43, .97)
+  );
+
+  border: 1px solid rgba(100, 127, 166, .65);
+  border-radius: 24px;
+
+  backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, .5),
+    0 0 25px rgba(37, 99, 235, .12),
+    inset 0 1px 0 rgba(186, 230, 253, .12);
+}
+
+.card-header-magic {
+  padding: 2rem 2rem 1.5rem;
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, .25),
+    rgba(29, 53, 87, .15)
+  );
+
+  border-bottom: 1px solid rgba(100, 127, 166, .45);
+}
+
+.card-header-magic h1 {
+  color: var(--color-texto);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.card-auth .card-body {
+  padding: 1.75rem 2rem 2rem;
+}
+
+/* 4. CAMPOS DE LOS FORMULARIOS */
+
+.card-auth .form-label {
+  color: var(--color-texto-secundario);
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  margin-bottom: .45rem;
+}
+
+.card-auth .form-control {
+  min-height: 45px;
+  background: rgba(23, 43, 73, .85);
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto);
+  border-radius: 10px;
+  padding: .65rem .9rem;
+}
+
+.card-auth .form-control:focus {
+  background: var(--color-input);
+  border-color: var(--color-acento);
+  color: var(--color-texto);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, .15);
+}
+
+.card-auth .form-control::placeholder {
+  color: #8FA6C5;
+}
+
+.card-auth .input-group-text {
+  background: rgba(23, 43, 73, .95);
+  border: 1px solid var(--color-borde);
+  color: var(--color-acento);
+  border-radius: 10px 0 0 10px;
+}
+
+.card-auth .input-group > .form-control {
+  border-radius: 0 10px 10px 0;
+}
+
+/* 5. BOTONES CON EFECTO BRILLANTE */
+
+.btn-magic {
+  width: 100%;
+  min-height: 46px;
+
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    var(--color-primario),
+    #1D4ED8
+  );
+
+  color: var(--color-texto);
+  border: 1px solid rgba(56, 189, 248, .4);
+  border-radius: 12px;
+
+  font-weight: 700;
+  letter-spacing: .06em;
+
+  box-shadow: 0 4px 20px rgba(37, 99, 235, .3);
+  transition: all .25s;
+}
+
+/* Brillo que atraviesa el botón */
+
+.btn-magic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, .18),
+    transparent
+  );
+
+  transition: left .5s;
+  pointer-events: none;
+}
+
+.btn-magic:hover {
+  color: var(--color-texto);
+
+  background: linear-gradient(
+    135deg,
+    #3B82F6,
+    var(--color-primario)
+  );
+
+  box-shadow: 0 6px 30px rgba(56, 189, 248, .35);
+  transform: translateY(-1px);
+}
+
+.btn-magic:hover::before {
+  left: 100%;
+}
+
+/* 6. ENLACES */
+
+.auth-link {
+  color: var(--color-acento);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.auth-link:hover {
+  color: #BAE6FD;
+  text-decoration: underline;
+}
+
+.auth-footer {
+  color: var(--color-texto-secundario);
+  font-size: .9rem;
+  text-align: center;
+  margin-top: 1.3rem;
+}
+
+.auth-back-home {
+  position: relative;
+  z-index: 2;
+  color: var(--color-texto-secundario);
+  text-decoration: none;
+  margin-bottom: 18px;
+}
+
+.auth-back-home:hover {
+  color: var(--color-acento);
+}
+
+/* 7. RESPONSIVE */
+
+@media (max-width: 480px) {
+  .pantalla-auth {
+    padding: 20px 12px;
+  }
+
+  .card-auth .card-body {
+    padding: 1.4rem 1.25rem;
+  }
+
+  .card-header-magic {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* Evitar que Bootstrap cambie el fondo */
+
+html body {
+  background-color: var(--color-fondo);
+}

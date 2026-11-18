@@ -1,0 +1,250 @@
+
+<main class="pantalla-home">
+
+  <!-- ENCABEZADO -->
+
+
+<header class="home-header">
+
+  <a routerLink="/home" class="home-logo">
+    ✦ PHANNY GAMES
+  </a>
+
+  <a routerLink="/muro-fanarts" class="home-muro">
+  <span>✧</span>
+  Muros de fanarts
+</a>
+
+  <a routerLink="/login" class="btn home-login">
+    Iniciar sesión
+  </a>
+
+</header>
+
+
+  <!-- CONTENIDO HOME -->
+
+  @if (router.url === '/home' || router.url === '/') {
+
+    <!-- PRESENTACIÓN -->
+
+    <section class="home-hero" id="inicio">
+
+      <p class="home-etiqueta">
+        ✧ UN UNIVERSO DE HISTORIAS ✧
+      </p>
+
+      <h1>
+        Bienvenido a
+        <span>Phanny Games</span>
+      </h1>
+
+      <p class="home-descripcion">
+        Descubre historias, conoce personajes y encuentra
+        nuevos mundos a través de las novelas visuales.
+      </p>
+
+      <a routerLink="/biblioteca" class="btn home-explorar">
+        EXPLORAR HISTORIAS ✦
+      </a>
+
+    </section>
+
+    <!-- HISTORIAS PARA DESCUBRIR -->
+
+    <section class="home-biblioteca" id="historias">
+
+      <div class="home-titulo-seccion">
+        <p>DESCUBRE NUEVOS MUNDOS</p>
+        <h2>Historias para descubrir</h2>
+        <span>Conoce algunas de las historias que llegarán a Phanny Games.</span>
+      </div>
+
+      <div class="row">
+
+        <!-- NOVELA 1 -->
+        <div class="col-md-4 mb-4">
+          <a routerLink="/detalles-novela" class="novela-enlace">
+            <article class="novela-card">
+              <div class="novela-portada portada-uno">
+                <span>✦</span>
+              </div>
+              <div class="novela-info">
+                <h3>Próximamente</h3>
+                <p>Una nueva historia te espera.</p>
+                <span class="novela-estado">En preparación</span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+        <!-- NOVELA 2 -->
+        <div class="col-md-4 mb-4">
+          <a routerLink="/detalles-novela" class="novela-enlace">
+            <article class="novela-card">
+              <div class="novela-portada portada-dos">
+                <span>◇</span>
+              </div>
+              <div class="novela-info">
+                <h3>Próximamente</h3>
+                <p>Un mundo lleno de posibilidades.</p>
+                <span class="novela-estado">En preparación</span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+        <!-- NOVELA 3 -->
+        <div class="col-md-4 mb-4">
+          <a routerLink="/detalles-novela" class="novela-enlace">
+            <article class="novela-card">
+              <div class="novela-portada portada-tres">
+                <span>✧</span>
+              </div>
+              <div class="novela-info">
+                <h3>Próximamente</h3>
+                <p>Historias que pronto podrás explorar.</p>
+                <span class="novela-estado">En preparación</span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+        <!-- NOVELA 4 -->
+        <div class="col-md-4 mb-4">
+          <a routerLink="/detalles-novela" class="novela-enlace">
+            <article class="novela-card">
+              <div class="novela-portada portada-uno">
+                <span>❖</span>
+              </div>
+              <div class="novela-info">
+                <h3>Próximamente</h3>
+                <p>Una aventura está por comenzar.</p>
+                <span class="novela-estado">En preparación</span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+        <!-- NOVELA 5 -->
+        <div class="col-md-4 mb-4">
+          <a routerLink="/detalles-novela" class="novela-enlace">
+            <article class="novela-card">
+              <div class="novela-portada portada-dos">
+                <span>✺</span>
+              </div>
+              <div class="novela-info">
+                <h3>Próximamente</h3>
+                <p>Un nuevo mundo aguarda por ti.</p>
+                <span class="novela-estado">En preparación</span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+        <!-- NOVELA 6 -->
+        <div class="col-md-4 mb-4">
+          <a routerLink="/detalles-novela" class="novela-enlace">
+            <article class="novela-card">
+              <div class="novela-portada portada-tres">
+                <span>✧</span>
+              </div>
+              <div class="novela-info">
+                <h3>Próximamente</h3>
+                <p>Una historia espera ser descubierta.</p>
+                <span class="novela-estado">En preparación</span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+  }
+
+  <!-- CONTENIDO BIBLIOTECA -->
+
+  @if (router.url === '/biblioteca') {
+
+    <section class="home-biblioteca home-catalogo">
+
+      <div class="home-titulo-seccion">
+        <p>EXPLORA NUESTRO UNIVERSO</p>
+        <h2>Biblioteca de novelas visuales</h2>
+        <span>Encuentra nuevas historias y descubre tu próxima aventura.</span>
+      </div>
+
+      <!-- BUSCADOR -->
+
+      <div class="biblioteca-busqueda">
+        <span>⌕</span>
+
+        <input
+          type="text"
+          placeholder="Buscar una novela..."
+          aria-label="Buscar una novela"
+        >
+      </div>
+
+      <!-- FILTROS -->
+
+      <div class="biblioteca-filtros">
+
+        <p>Explorar por género</p>
+
+        <div class="filtros-etiquetas">
+
+          <button type="button" class="filtro-etiqueta activo">
+            Todos
+          </button>
+
+          <button type="button" class="filtro-etiqueta">
+            Romance
+          </button>
+
+          <button type="button" class="filtro-etiqueta">
+            Drama
+          </button>
+
+          <button type="button" class="filtro-etiqueta">
+            Misterio
+          </button>
+
+          <button type="button" class="filtro-etiqueta">
+            Fantasía
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- CATÁLOGO VACÍO -->
+
+      <div class="biblioteca-vacia">
+
+        <div class="biblioteca-vacia-icono">
+          ✧
+        </div>
+
+        <h3>Próximamente habrá nuevas historias</h3>
+
+        <p>
+          Estamos preparando nuevas novelas visuales para nuestra comunidad.
+          Muy pronto podrás descubrirlas aquí.
+        </p>
+
+      </div>
+
+    </section>
+
+  }
+
+  <!-- PIE DE PÁGINA -->
+
+  <footer class="home-footer">
+    <p>PHANNY GAMES ✦ Un universo de historias por descubrir.</p>
+  </footer>
+
+</main>

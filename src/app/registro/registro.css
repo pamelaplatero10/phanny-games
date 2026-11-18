@@ -1,0 +1,49 @@
+
+/* =========================================
+   REGISTRO
+========================================= */
+
+/* Fondo azul temporal para visualizar el diseño */
+
+.pantalla-auth-registro {
+  background-color: var(--color-fondo);
+}
+
+/* Registro conserva el mismo ancho que Login */
+
+.pantalla-auth-registro .card-auth {
+  max-width: 420px;
+}
+
+/* Selección de rol */
+
+.seleccion-rol {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+
+  padding: 14px;
+  background: rgba(23, 43, 73, .75);
+
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+}
+
+.seleccion-rol .form-check {
+  margin: 0;
+}
+
+.seleccion-rol .form-check-label {
+  color: var(--color-texto);
+  font-size: .9rem;
+}
+
+.seleccion-rol .form-check-input {
+  background-color: var(--color-input);
+  border-color: var(--color-borde);
+}
+
+.seleccion-rol .form-check-input:checked {
+  background-color: var(--color-primario);
+  border-color: var(--color-acento);
+}
